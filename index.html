@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Jatin Dhurve | Quant Finance & ESG Analytics</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--bg2:#111118;--bg3:#16161f;--gold:#d4a853;--gold2:#f0c875;--gold3:#b8902e;--text:#e8e8f0;--muted:#8888a8;--border:#2a2a3a}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 8%}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:56px}
+.nav-logo{font-size:1.2rem;font-weight:800;color:var(--gold);letter-spacing:1px}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.82rem;letter-spacing:.5px;text-transform:uppercase;transition:.2s}
+.nav-links a:hover{color:var(--gold)}
+
+/* SECTIONS */
+.section{padding:70px 8%;max-width:1100px;margin:0 auto}
+.section-label{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.section-title{font-size:2rem;font-weight:800;margin-bottom:8px}
+.section-title span{color:var(--gold)}
+.divider{width:50px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:32px}
+
+/* HERO */
+#hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:80px 8% 60px;max-width:100%;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(212,168,83,.07) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-block;background:rgba(212,168,83,.12);border:1px solid rgba(212,168,83,.3);color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero-name{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:900;line-height:1.05;margin-bottom:16px}
+.hero-name span{color:var(--gold)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:28px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:linear-gradient(135deg,var(--gold3),var(--gold));color:#0a0a0f;padding:10px 22px;border-radius:6px;font-weight:700;font-size:.88rem;cursor:pointer;border:none;transition:.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,168,83,.3)}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:10px 22px;border-radius:6px;font-weight:600;font-size:.88rem;background:transparent;cursor:pointer;transition:.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.5rem;padding-top:28px;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat-num{font-size:1.7rem;font-weight:900;color:var(--gold)}
+.stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about-text p{color:var(--muted);margin-bottom:12px;font-size:.93rem}
+.about-text p strong{color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{background:var(--bg3);border:1px solid var(--border);padding:4px 14px;border-radius:20px;font-size:.75rem;color:var(--muted)}
+.chip.gold{background:rgba(212,168,83,.07);border-color:rgba(212,168,83,.4);color:var(--gold)}
+.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.3rem;margin-bottom:14px;transition:.2s}
+.edu-card:hover{border-color:rgba(212,168,83,.4)}
+.edu-school{font-weight:700;margin-bottom:3px}
+.edu-degree{color:var(--gold);font-size:.85rem;margin-bottom:3px}
+.edu-meta{color:var(--muted);font-size:.75rem}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--border))}
+.tl-item{position:relative;margin-bottom:36px;padding-left:24px}
+.tl-dot{position:absolute;left:-34px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(212,168,83,.5)}
+.tl-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:2px}
+.tl-company{font-weight:700;font-size:1rem}
+.tl-date{font-size:.75rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);padding:2px 10px;border-radius:12px}
+.tl-role{color:var(--gold);font-size:.85rem;margin-bottom:2px}
+.tl-loc{color:var(--muted);font-size:.75rem;margin-bottom:10px}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-bullets li{font-size:.83rem;color:var(--muted);padding-left:16px;position:relative}
+.tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:3px}
+
+/* PROJECTS */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:5px 14px;border-radius:20px;font-size:.78rem;cursor:pointer;transition:.2s}
+.filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,168,83,.08)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:.25s}
+.proj-card:hover{border-color:rgba(212,168,83,.5);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.proj-card.hidden{display:none}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tag{font-size:.68rem;padding:2px 8px;border-radius:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.tag-quant{background:rgba(212,168,83,.15);color:var(--gold);border:1px solid rgba(212,168,83,.3)}
+.tag-esg{background:rgba(80,200,120,.12);color:#5cc870;border:1px solid rgba(80,200,120,.3)}
+.tag-ml{background:rgba(120,120,255,.12);color:#9090ff;border:1px solid rgba(120,120,255,.3)}
+.proj-title{font-weight:700;font-size:.95rem;margin-bottom:8px;line-height:1.35}
+.proj-desc{font-size:.8rem;color:var(--muted);margin-bottom:10px;line-height:1.6}
+.metrics{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.metric{background:rgba(212,168,83,.08);border:1px solid rgba(212,168,83,.2);color:var(--gold2);font-size:.7rem;padding:2px 8px;border-radius:6px;font-weight:600}
+.proj-link{color:var(--gold);font-size:.78rem;font-weight:700}
+.proj-link:hover{color:var(--gold2)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.skill-group{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
+.skill-group-title{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:700}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px}
+.skill-tag{background:var(--bg2);border:1px solid var(--border);color:var(--text);font-size:.76rem;padding:4px 10px;border-radius:6px}
+.lang-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border)}
+.lang-row:last-child{border-bottom:none}
+.lang-level{font-size:.7rem;color:var(--gold);background:rgba(212,168,83,.1);padding:2px 10px;border-radius:10px}
+.langs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:4px}
+
+/* CONTACT */
+.contact-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:400px;height:300px;background:radial-gradient(circle,rgba(212,168,83,.07),transparent 70%);pointer-events:none}
+.contact-box h2{font-size:1.8rem;font-weight:800;margin-bottom:10px}
+.contact-box p{color:var(--muted);margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-size:.85rem;font-weight:500;transition:.2s}
+.contact-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+footer{text-align:center;padding:1.2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.75rem}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr}
+  .section,.hero-section{padding-left:5%;padding-right:5%}
+  #hero{padding-left:5%;padding-right:5%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">JD</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-tag">Quantitative Finance & ESG Analytics</div>
+  <h1 class="hero-name">Hi, I'm <span>Jatin</span><br>Dhurve</h1>
+  <p class="hero-sub">MSc Finance (Frankfurt School, 2025). I build data-driven models at the intersection of quantitative portfolio management, ESG analytics, and machine learning.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About Me</button>
+    <button class="btn-outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Work Experience</button>
+    <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+    <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+    <div><div class="stat-num">8+</div><div class="stat-label">Projects</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About <span>Me</span></div>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p><strong>Quantitative finance professional</strong> originally from Mumbai, India, now based in Frankfurt am Main, Germany.</p>
+      <p>I hold an <strong>MSc Finance (Capital Markets)</strong> from Frankfurt School of Finance & Management, completed August 2025, and a Bachelor's in Management Studies from the University of Mumbai.</p>
+      <p>My work bridges <strong>quantitative portfolio management</strong> and <strong>ESG analytics</strong> — from GARCH volatility models and HMM regime-detection to automated sustainability reporting tools for international clients.</p>
+      <p>Outside finance:</p>
+      <div class="chips">
+        <span class="chip gold">🏏 Cricket (School Team, 5 yrs)</span>
+        <span class="chip gold">⚽ Football</span>
+        <span class="chip">📊 Quant Research</span>
+        <span class="chip">🌱 Sustainability</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:14px">Education</div>
+      <div class="edu-card">
+        <div class="edu-school">Frankfurt School of Finance & Management</div>
+        <div class="edu-degree">MSc Finance — Capital Markets</div>
+        <div class="edu-meta">📍 Frankfurt am Main, Germany &nbsp;|&nbsp; Sep 2023 – Aug 2025</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-school">University of Mumbai</div>
+        <div class="edu-degree">Bachelor of Management Studies — Finance</div>
+        <div class="edu-meta">📍 Mumbai, India &nbsp;|&nbsp; Jul 2020 – Apr 2023</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="section">
+  <div class="section-label">Career</div>
+  <div class="section-title">Work <span>Experience</span></div>
+  <div class="divider"></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-head">
+        <div class="tl-company">Effectual Capital GmbH</div>
+        <span class="tl-date">Oct 2025 – Present</span>
+      </div>
+      <div class="tl-role">Intern — Quantitative Research & Product Development</div>
+      <div class="tl-loc">📍 Frankfurt am Main, Germany</div>
+      <ul class="tl-bullets">
+        <li>Conducted Python-based quantitative analyses using financial and sustainability datasets to contribute to ongoing research activities.</li>
+        <li>Participated in portfolio construction and backtesting based on the Effectual sustainable investment methodology.</li>
+        <li>Contributed to the development of quantitative forecasting approaches for company sustainability data.</li>
+        <li>Supported the development of data quality checks and data cleaning workflows for large, complex datasets — including a framework handling 90,000+ company records using MICE with random forest and linear interpolation, achieving 75%+ accuracy.</li>
+        <li>Used AI tools to process unstructured text and extract sustainability-relevant information.</li>
+        <li>Executed process-automation tasks including email-based data extraction and structured client-communication workflows, reducing manual reporting time by 60%+.</li>
+        <li>Used the Bloomberg Terminal to collect, prepare, and evaluate data for portfolio-related research projects — constructing optimal equity portfolio weights and beating the benchmark by 200–300 BP.</li>
+        <li>Developed video-based data visualization tools in Python, including interactive performance dashboards comparing fund performance vs benchmarks and peer information ratios.</li>
+        <li>Developed a BQNT App to monitor excess performance of different share classes of Effectual funds.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-head">
+        <div class="tl-company">Value Balancing Alliance</div>
+        <span class="tl-date">Sep 2024 – Aug 2025</span>
+      </div>
+      <div class="tl-role">Working Student — Financial Market Chapter</div>
+      <div class="tl-loc">📍 Frankfurt am Main, Germany</div>
+      <ul class="tl-bullets">
+        <li>Built RAG-based document analysis system using vector embeddings and cosine similarity to compare Japanese sustainability reports against ESRS standards for international client development.</li>
+        <li>Analyzed CDP datasets and performed statistical analysis on financial and impact data, delivering insights through scenario analysis models for sustainability risk assessment.</li>
+        <li>Modified GCAM model configurations for SSP1–SSP5 scenario analyses covering water, land use, agriculture, and GHG emissions across multiple regions.</li>
+        <li>Acted as liaison between data analytics and stakeholder reporting, translating technical requirements into business solutions.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-head">
+        <div class="tl-company">FessorPro</div>
+        <span class="tl-date">Sep 2023 – Aug 2024</span>
+      </div>
+      <div class="tl-role">Intern — Quantitative Researcher</div>
+      <div class="tl-loc">📍 Remote</div>
+      <ul class="tl-bullets">
+        <li>Analyzed, developed, and optimized equity trading strategies for Indian markets using quantitative methods.</li>
+        <li>Implemented backtesting with walk-forward optimization and out-of-sample testing.</li>
+        <li>Collaborated with team to refine models and align strategies with real-time market conditions.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-head">
+        <div class="tl-company">JD-Investing</div>
+        <span class="tl-date">Sep 2021 – Aug 2023</span>
+      </div>
+      <div class="tl-role">Founder</div>
+      <div class="tl-loc">📍 Mumbai, India</div>
+      <ul class="tl-bullets">
+        <li>Trained 1,000+ participants through workshops to simplify financial concepts and apply data-driven investment strategies.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section">
+  <div class="section-label">Work</div>
+  <div class="section-title">Featured <span>Projects</span></div>
+  <div class="divider"></div>
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterProj('all',this)">All</button>
+    <button class="filter-btn" onclick="filterProj('quant',this)">Quant Finance</button>
+    <button class="filter-btn" onclick="filterProj('esg',this)">ESG</button>
+    <button class="filter-btn" onclick="filterProj('ml',this)">ML / AI</button>
+  </div>
+  <div class="proj-grid">
+
+    <div class="proj-card" data-cat="quant ml">
+      <div class="proj-tags"><span class="tag tag-quant">Quant</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">GARCH-Forecasted vs Historical Volatility in MVO</div>
+      <div class="proj-desc">Comparative analysis of GARCH(1,1) vs historical volatility for portfolio optimization using 46 S&P 500 stocks over 13+ years, with Bayes-Stein shrinkage and rolling-window estimation in R.</div>
+      <div class="metrics"><span class="metric">+7% Sharpe (1.36 vs 1.27)</span><span class="metric">16% lower max drawdown</span><span class="metric">~25% CAGR</span></div>
+      <a href="https://github.com/JATINDHURVE" target="_blank" class="proj-link">GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="quant ml">
+      <div class="proj-tags"><span class="tag tag-quant">Quant</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">CAPM-Based Portfolio Optimization with Fundamental Analysis</div>
+      <div class="proj-desc">Two-stage framework combining fundamental fund selection with CAPM-based MVO for Indian equity mutual funds. Quarterly rebalancing over 71-month rolling windows with risk-adjusted position limits.</div>
+      <div class="metrics"><span class="metric">₹4.15M from ₹1M</span><span class="metric">24.5% CAGR</span><span class="metric">0.85 Sharpe</span></div>
+    </div>
+
+    <div class="proj-card" data-cat="quant ml">
+      <div class="proj-tags"><span class="tag tag-quant">Quant</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">Portfolio Optimization on Hedge Fund Indices</div>
+      <div class="proj-desc">Combining RMT filtering, Tyler's M-Estimator, and ensemble ML (Huber/AdaBoost/ElasticNet) for hedge fund allocation on 18+ years of HFRI data. 46 quarterly rebalancing periods with 7-year training windows.</div>
+      <div class="metrics"><span class="metric">+69% Sharpe (1.15 vs 0.68)</span><span class="metric">37–69% R²</span><span class="metric">77–85% directional accuracy</span></div>
+      <a href="https://github.com/JATINDHURVE" target="_blank" class="proj-link">GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="quant ml">
+      <div class="proj-tags"><span class="tag tag-quant">Quant</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">Regime Identification via HMM & Portfolio Optimization</div>
+      <div class="proj-desc">4-state Hidden Markov Model on macroeconomic indicators (Jan 1990–Mar 2025) identifying Recovery, Expansion, Downturn & Slowdown regimes for dynamic portfolio optimization.</div>
+      <div class="metrics"><span class="metric">100% recession detection</span><span class="metric">Sharpe 1.01→1.22</span><span class="metric">Drawdown 19%→13.7%</span></div>
+      <a href="https://github.com/JATINDHURVE" target="_blank" class="proj-link">GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="esg ml">
+      <div class="proj-tags"><span class="tag tag-esg">ESG</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">VBA/BSR Methodology Alignment Tool</div>
+      <div class="proj-desc">Python tool suite using Hugging Face transformers to analyze BSR member companies' sustainability reports, quantifying alignment with VBA methodology frameworks via cosine similarity (0.25 threshold).</div>
+      <div class="metrics"><span class="metric">Automated text vectorization</span><span class="metric">Cosine similarity scoring</span></div>
+    </div>
+
+    <div class="proj-card" data-cat="esg ml">
+      <div class="proj-tags"><span class="tag tag-esg">ESG</span><span class="tag tag-ml">ML</span></div>
+      <div class="proj-title">Cross-Border ESG Regulatory Alignment (VBA × DBJ)</div>
+      <div class="proj-desc">Assessed 80+ Japanese corporate ESG reports (1–2 trillion JPY market cap) for alignment with ESRS using OpenAI and BERT embeddings, in collaboration with Development Bank of Japan.</div>
+      <div class="metrics"><span class="metric">80+ reports analyzed</span><span class="metric">BERT + OpenAI embeddings</span></div>
+    </div>
+
+    <div class="proj-card" data-cat="esg">
+      <div class="proj-tags"><span class="tag tag-esg">ESG</span></div>
+      <div class="proj-title">Resource Impact Metric Development for Regional Climate Assessment</div>
+      <div class="proj-desc">Quantitative framework calculating resource impact per revenue using CDP data, WIFOR coefficients, and GCAM projections across SSP1–SSP5 scenarios for South Africa and Zimbabwe.</div>
+      <div class="metrics"><span class="metric">SSP1–SSP5 scenarios</span><span class="metric">Multi-source data integration</span></div>
+    </div>
+
+    <div class="proj-card" data-cat="esg">
+      <div class="proj-tags"><span class="tag tag-esg">ESG</span></div>
+      <div class="proj-title">Global Climate Scenario Analysis Using GCAM Model</div>
+      <div class="proj-desc">Modified GCAM model for SSP1–SSP5 scenario analyses, analyzing water consumption, land use, agriculture, and GHG emissions across multiple regions.</div>
+      <div class="metrics"><span class="metric">GCAM model configuration</span><span class="metric">Multi-region analysis</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section">
+  <div class="section-label">Expertise</div>
+  <div class="section-title">Skills & <span>Tools</span></div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Programming Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python (Advanced)</span><span class="skill-tag">R (Intermediate)</span><span class="skill-tag">SQL (Intermediate)</span><span class="skill-tag">C++ (Basic)</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools & Software</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Bloomberg Terminal</span><span class="skill-tag">Excel (Advanced / VBA)</span><span class="skill-tag">PowerBI</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">PowerPoint</span><span class="skill-tag">Word</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ESG & Sustainability</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Impact Measurement</span><span class="skill-tag">ESG Data Analytics</span><span class="skill-tag">ESRS Standards</span><span class="skill-tag">CSRD Reporting</span><span class="skill-tag">CDP Analysis</span><span class="skill-tag">TCFD Guidelines</span><span class="skill-tag">Scenario Analysis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Quantitative Finance</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Portfolio Optimization</span><span class="skill-tag">GARCH Models</span><span class="skill-tag">Hidden Markov Models</span><span class="skill-tag">Backtesting</span><span class="skill-tag">Mean-Variance Optimization</span><span class="skill-tag">Factor Models</span>
+      </div>
+    </div>
+    <div class="skill-group" style="grid-column:span 2">
+      <div class="skill-group-title">Languages</div>
+      <div class="langs-grid">
+        <div class="lang-row"><span>English</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-row"><span>Hindi</span><span class="lang-level">Native</span></div>
+        <div class="lang-row"><span>Marathi</span><span class="lang-level">Native</span></div>
+        <div class="lang-row"><span>German</span><span class="lang-level">Beginner (A2)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section" style="padding-bottom:40px">
+  <div class="contact-box">
+    <div class="section-label" style="text-align:center">Get In Touch</div>
+    <h2>Let's <span style="color:var(--gold)">Connect</span></h2>
+    <p>Open to quant finance roles, ESG analytics projects, and research collaborations.</p>
+    <div class="contact-links">
+      <a href="mailto:jatin.dhurve@outlook.com" class="contact-link">✉️ Email</a>
+      <a href="https://www.linkedin.com/in/jatin-dhurve/" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://github.com/JATINDHURVE" target="_blank" class="contact-link">🐙 GitHub</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 Jatin Dhurve · Built with passion for finance & data</footer>
+
+<script>
+function filterProj(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    card.classList.toggle('hidden', cat !== 'all' && !cats.includes(cat));
+  });
+}
+</script>
+</body>
+</html>
